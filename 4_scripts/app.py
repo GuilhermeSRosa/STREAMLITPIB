@@ -10,7 +10,7 @@ import numpy as np
 #query = "SELECT * FROM PIB_Países"
 #df = pd.read_sql_query(query, engine)
 
-dados = pd.read_csv("../0_bases_originais/dados_originais.csv", sep=";", encoding='utf-8')
+dados = pd.read_csv("0_bases_originais/dados_originais.csv", sep=";", encoding='utf-8')
 df = pd.DataFrame(dados)
 
 paises = df['pais'].unique()
