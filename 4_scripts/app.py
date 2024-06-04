@@ -4,12 +4,12 @@ import sqlalchemy as db
 import plotly.express as px
 import numpy as np
 
-engine = db.create_engine('sqlite:///dfpib.db',echo = True)
-conn = engine.connect()
+#engine = db.create_engine('sqlite:///dfpib.db',echo = True)
+#conn = engine.connect()
 
-query = "SELECT * FROM PIB_Países"
-df = pd.read_sql_query(query, engine)
-
+#query = "SELECT * FROM PIB_Países"
+#df = pd.read_sql_query(query, engine)
+df = pd.read_csv("0_bases_originais/dados_originais_taxa_de_homicídio_intencional.csv", sep=";", encoding='utf-8')
 paises = df['pais'].unique()
 regioes = df['regiao'].unique()
 anos = df['fmi_ano'].unique()
