@@ -3,4 +3,3 @@ selenium
 streamlit
 sqlalchemy
 plotly
-sqlite3
