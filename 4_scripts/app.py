@@ -8,7 +8,7 @@ engine = db.create_engine('sqlite:///dfpib.db',echo = True)
 conn = engine.connect()
 
 query = "SELECT * FROM PIB_Países"
-df = pd.read_sql_query(query, engine)
+df = pd.read_sql(query, engine)
 
 paises = df['pais'].unique()
 regioes = df['regiao'].unique()
