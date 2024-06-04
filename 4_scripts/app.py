@@ -42,12 +42,3 @@ st.plotly_chart(fig_diferenca)
 
 fig = px.pie(df, 'regiao')
 st.plotly_chart(fig)
-
-
-
-df_filtrado['diferenca'] = df_filtrado['fmi_estimativa'].str.replace(',', '').astype(float) - df_filtrado['bm_estimativa'].str.replace(',', '').astype(float)
-fig_diferenca = px.bar(df_filtrado, x='pais', y='diferenca', title='Diferença FMI e BM')
-st.plotly_chart(fig_diferenca)
-
-fig = px.pie(df, 'regiao')
-st.plotly_chart(fig)
