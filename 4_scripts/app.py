@@ -9,7 +9,10 @@ import numpy as np
 
 #query = "SELECT * FROM PIB_Países"
 #df = pd.read_sql_query(query, engine)
-df = pd.read_csv("0_bases_originais/dados_originais_taxa_de_homicídio_intencional.csv", sep=";", encoding='utf-8')
+
+dados = pd.read_csv("../0_bases_originais/dados_originais.csv", sep=";", encoding='utf-8')
+df = pd.DataFrame(dados)
+
 paises = df['pais'].unique()
 regioes = df['regiao'].unique()
 anos = df['fmi_ano'].unique()
@@ -31,6 +34,15 @@ st.plotly_chart(fig_fmi)
 
 fig_bm = px.bar(df_filtrado, x='pais', y='bm_estimativa', title='BM Estimativa')
 st.plotly_chart(fig_bm)
+
+
+df_filtrado['diferenca'] = df_filtrado['fmi_estimativa'].str.replace(',', '').astype(float) - df_filtrado['bm_estimativa'].str.replace(',', '').astype(float)
+fig_diferenca = px.bar(df_filtrado, x='pais', y='diferenca', title='Diferença FMI e BM')
+st.plotly_chart(fig_diferenca)
+
+fig = px.pie(df, 'regiao')
+st.plotly_chart(fig)
+
 
 
 df_filtrado['diferenca'] = df_filtrado['fmi_estimativa'].str.replace(',', '').astype(float) - df_filtrado['bm_estimativa'].str.replace(',', '').astype(float)
